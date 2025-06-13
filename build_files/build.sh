@@ -10,14 +10,31 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux 
+dnf5 install -y \
+    freeipa-client \
+    htop \
+    bat \
+    fd-find \
+    ripgrep \
+    poppler \
+    qrencode \
+    uv \
+    zoxide
 
 # Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
+dnf5 -y copr enable derenderkeks/proxmox-backup-client
+dnf5 -y copr enable atim/starship
+dnf5 -y copr enable lihaohong/yazi
+dnf5 -y install proxmox-backup-client starship yazi
 # Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+dnf5 -y copr disable derenderkeks/proxmox-backup-client
+dnf5 -y copr disable atim/starship
+dnf5 -y copr disable lihaohong/yazi
+
+# VSCode
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/vscode.repo > /dev/null
+dnf5 -y install code
 
 #### Example for enabling a System Unit File
 
