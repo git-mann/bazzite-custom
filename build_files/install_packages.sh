@@ -23,6 +23,13 @@ dnf5 install -y \
     zoxide \
     powerline-fonts
 
+# Fix sssd 2.11
+chgrp sssd /usr/libexec/sssd/ldap_child
+chgrp sssd /usr/libexec/sssd/krb5_child
+chgrp sssd /usr/libexec/sssd/proxy_child
+chgrp sssd /usr/libexec/sssd/selinux_child
+chgrp sssd /usr/libexec/sssd/sssd_pam
+
 # Use a COPR Example:
 dnf5 -y copr enable derenderkeks/proxmox-backup-client
 dnf5 -y copr enable atim/starship
