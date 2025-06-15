@@ -10,9 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-# Force install of older sssd version (2.11 seems to be broken with bazzite atm)
 dnf5 install -y \
-    sssd-2.10.2-3.fc42 \
     freeipa-client \
     sssd-passkey \
     htop \
