@@ -9,9 +9,6 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# sysusers fix for rpm-ostree
-useradd --system --comment "User for sssd" --home-dir /run/sssd/ --shell /sbin/nologin --user-group sssd
-
 # this installs a package from fedora repos
 dnf5 install -y \
     freeipa-client \
@@ -26,6 +23,13 @@ dnf5 install -y \
     uv \
     zoxide \
     powerline-fonts
+
+# Fix sssd 2.11
+chgrp sssd /usr/libexec/sssd/ldap_child
+chgrp sssd /usr/libexec/sssd/krb5_child
+chgrp sssd /usr/libexec/sssd/proxy_child
+chgrp sssd /usr/libexec/sssd/selinux_child
+chgrp sssd /usr/libexec/sssd/sssd_pam
 
 # Use a COPR Example:
 dnf5 -y copr enable derenderkeks/proxmox-backup-client
