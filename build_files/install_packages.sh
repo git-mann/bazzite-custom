@@ -13,7 +13,6 @@ set -ouex pipefail
 dnf5 install -y \
     freeipa-client \
     sssd-passkey \
-    sssd-proxy \
     htop \
     bat \
     fd-find \
