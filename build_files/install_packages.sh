@@ -10,6 +10,8 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
+dnf5 install -y sssd-common
+
 dnf5 install -y \
     freeipa-client \
     sssd-passkey \
