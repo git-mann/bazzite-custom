@@ -1,0 +1,19 @@
+name: delete-untagged
+on:
+  schedule:
+    - cron: "10 13 * * 0"
+  workflow_dispatch:
+jobs:
+  delete_untagged:
+    name: Delete Package Versions
+    runs-on: ubuntu-24.04
+    permissions: 
+      packages: write
+    steps:
+      - uses: actions/delete-package-versions@v5
+        with: 
+          package-name: 'bazzite-custom'
+          package-type: 'container'
+          min-versions-to-keep: 10
+          delete-only-untagged-versions: 'true'
+          
