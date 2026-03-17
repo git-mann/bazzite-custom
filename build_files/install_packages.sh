@@ -27,7 +27,8 @@ dnf5 install -y \
     sccache \
 && chown root:sssd /usr/libexec/sssd/selinux_child \
 && restorecon /usr/libexec/sssd/selinux_child \
-&& setcap cap_setgid,cap_setuid=p /usr/libexec/sssd/selinux_child
+&& setcap cap_setgid,cap_setuid=p /usr/libexec/sssd/selinux_child \
+&& dnf remove -y sssd-passkey
 
 # Use a COPR Example:
 dnf5 -y copr enable derenderkeks/proxmox-backup-client
