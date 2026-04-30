@@ -26,6 +26,7 @@ dnf5 install -y \
     podlet \
     sccache \
     mumble \
+    ptyxis \
 && chown root:sssd /usr/libexec/sssd/selinux_child \
 && restorecon /usr/libexec/sssd/selinux_child \
 && setcap cap_setgid,cap_setuid=p /usr/libexec/sssd/selinux_child \
