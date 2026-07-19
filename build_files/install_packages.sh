@@ -27,6 +27,7 @@ dnf5 install -y \
     sccache \
     mumble \
     ptyxis \
+    perf \
 && dnf remove -y sssd-passkey
 
 # Use a COPR Example:
