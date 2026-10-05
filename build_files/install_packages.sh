@@ -28,7 +28,8 @@ dnf5 install -y \
     mumble \
     ptyxis \
     perf \
-&& dnf remove -y sssd-passkey
+    shellcheck \
+    markdownlint-cli2
 
 # Use a COPR Example:
 dnf5 -y copr enable derenderkeks/proxmox-backup-client
