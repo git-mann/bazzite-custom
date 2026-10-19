@@ -29,7 +29,9 @@ dnf5 install -y \
     ptyxis \
     perf \
     shellcheck \
-    markdownlint-cli2
+    markdownlint-cli2 \
+    python3-devel \
+    python3-tkinter
 
 # Use a COPR Example:
 dnf5 -y copr enable derenderkeks/proxmox-backup-client
