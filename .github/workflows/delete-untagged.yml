@@ -6,14 +6,20 @@ on:
 jobs:
   delete_untagged:
     name: Delete Package Versions
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     permissions:
       packages: write
     steps:
-      - uses: actions/delete-package-versions@v5
-        with:
-          package-name: 'bazzite-custom'
-          package-type: 'container'
-          min-versions-to-keep: 10
+      # - uses: actions/delete-package-versions@v5
+      #   with:
+      #     package-name: 'bazzite-custom'
+      #     package-type: 'container'
+      #     min-versions-to-keep: 10
           # delete-only-untagged-versions: 'true'
-
+      - uses: smartsquaregmbh/delete-old-packages@v1.0.0
+        with:
+          user: git-mann
+          type: docker
+          keep: 10
+          names: |
+            bazzite-custom
