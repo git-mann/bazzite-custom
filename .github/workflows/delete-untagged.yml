@@ -19,7 +19,7 @@ jobs:
       - uses: smartsquaregmbh/delete-old-packages@v1.0.0
         with:
           user: git-mann
-          type: docker
+          type: container
           keep: 10
           names: |
             bazzite-custom
